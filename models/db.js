@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  "mongodb+srv://aditi:aditi@cluster0.iph4fgv.mongodb.net/demo?retryWrites=true&w=majority",
+  "mongodb://admin:test1234@mongo.aditi-poc.svc.cluster.local:27017",
   { useNewUrlParser: true },
   (err) => {
     if (!err) {

@@ -21,7 +21,7 @@ pipeline {
     stages {
         stage('Deploy to DEV environment') {
             steps {
-                echo '###### Deploy to DEV environment ######'
+                echo '#####Deploy to DEV environment ######'
                 script {
                     openshift.withCluster() {
                         openshift.withProject("$DEV_PROJECT") {

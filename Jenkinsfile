@@ -26,7 +26,7 @@ pipeline {
                     openshift.withCluster() {
                         openshift.withProject("$DEV_PROJECT") {
                             echo "Using project: ${openshift.project()}"
-                            If DeploymentConfig already exists, rollout to update the application
+                           // If DeploymentConfig already exists, rollout to update the application
                             if (openshift.selector("dc", APP_NAME).exists()) {
                                 echo "DeploymentConfig " + APP_NAME + " exists, rollout to update app ..."
                                 // Rollout (it corresponds to oc rollout <deploymentconfig>)

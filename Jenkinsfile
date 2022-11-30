@@ -42,7 +42,7 @@ pipeline {
                             // If DeploymentConfig does not exist, deploy a new application using an OpenShift Template
                             else{
                                 echo "DeploymentConfig " + APP_NAME + " does not exist, creating app ..."
-                                openshift.newApp('deployment/openshift/node-app-template.yaml')
+                                openshift.newApp('https://github.com/aditi1800/node-app1/blob/main/deployment.yaml')
                             }
                             def route = openshift.selector("route", APP_NAME)
                             echo "Test application with "

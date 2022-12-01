@@ -4,9 +4,9 @@ services:
    - docker
 
 before_install:
-   - sh 'ip address'
    - docker build -t aditishinde/node-app2 .
-  
+   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+   - docker push aditishinde/node-app2
 
 script:
    - docker run -p 8080:8080 -d aditishinde/node-app2

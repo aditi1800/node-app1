@@ -4,7 +4,6 @@ services:
    - docker
 
 before_install:
-   - gem uninstall bundler
    - gem install bundler --version '1.7.4'
    - docker build -t aditishinde/node-app2 .
    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin

@@ -7,12 +7,13 @@ before_install:
    - docker build -t aditishinde/node-app2 .
    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
    - docker push aditishinde/node-app2
-   - wget https://mirror.openshift.com/pub/openshift-v4/amd64/clients/oc-dec2/4.6/linux/
+   - wget https://github.com/openshift/origin/releases/download/v3.10.0/openshift-origin-client-tools-v3.10.0-dd10d17-linux-64bit.tar.gz
+   - tar -xzf openshift-origin-client-tools-v3.10.0-dd10d17-linux-64bit.tar.gz
 
 script:
    - docker run -p 8080:8080 -d aditishinde/node-app2
    - docker ps
-   - cat /etc/os-release
+   - oc --help
   
    
     

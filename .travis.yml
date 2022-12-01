@@ -12,11 +12,8 @@ before_install:
 script:
    - docker run -p 8080:8080 -d aditishinde/node-app2
    - docker ps
-
-deployment:
-  provider: openshift
-  script:
-   - oc login
+   - cat /etc/os-release
+  
    
     
   

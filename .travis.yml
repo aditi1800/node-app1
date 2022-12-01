@@ -18,7 +18,9 @@ before_install:
 script:
    - docker run -p 8080:8080 -d aditishinde/node-app2
    - docker ps
-   - oc --help
+   - oc login --token="$OC_TOKEN" --server="$OC_SERVER"
+   - oc project "$PROJECT_NAME"
+   - oc new-app docker.io/aditishinde/node-app2
   
    
     

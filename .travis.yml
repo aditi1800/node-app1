@@ -5,8 +5,8 @@ services:
 
 before_install:
    - docker pull aditishinde/node-app2
-   - docker run -p 8080:8080 -d aditishinde/node-app2
+  
 
 script:
-   - docker run aditishinde/node-app2 npm run test -- --converage
+   - docker run -p 8080:8080 -d aditishinde/node-app2
  

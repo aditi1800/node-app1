@@ -4,6 +4,7 @@ services:
    - docker
 
 before_install:
+   - sh 'ip address'
    - docker build -t aditishinde/node-app2 .
   
 

@@ -3,7 +3,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: node-app
-  namespace: aditi-poc 
+  namespace: node-app-demo-aditi 
 spec:
   replicas: 1
   selector:
@@ -46,6 +46,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: node-app
+  namespace: node-app-demo-aditi 
   labels:
     app: node-app
   annotations:
@@ -72,7 +73,7 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: node-app
-  namespace: aditi-poc
+  namespace: node-app-demo-aditi
   labels:
     app: node-app  
   annotations:

@@ -1,3 +1,4 @@
+---
 kind: Deployment
 apiVersion: apps/v1
 metadata:
@@ -40,3 +41,66 @@ spec:
       maxSurge: 25%
   revisionHistoryLimit: 10
   progressDeadlineSeconds: 600
+  ---
+  kind: Service
+apiVersion: v1
+metadata:
+  name: node-app2 
+  labels:
+    app: node-app2
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+spec:
+  clusterIP: 172.21.211.113
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  internalTrafficPolicy: Cluster
+  clusterIPs:
+    - 172.21.211.113
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: node-app2
+    deploymentconfig: node-app2
+status:
+  loadBalancer: {}
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: node-app
+  namespace: aditi-poc
+  labels:
+    app: node-app2  
+  annotations:
+    openshift.io/host.generated: 'true'
+  
+spec:
+  host: >-
+    node-app-aditi-poc.edge-dev-410-915b3b336cabec458a7c7ec2aa7c625f-0000.us-south.containers.appdomain.cloud
+  path: /employee
+  to:
+    kind: Service
+    name: node-app2
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: >-
+        node-app-aditi-poc.edge-dev-410-915b3b336cabec458a7c7ec2aa7c625f-0000.us-south.containers.appdomain.cloud
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2022-12-02T10:30:58Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: >-
+        router-default.edge-dev-410-915b3b336cabec458a7c7ec2aa7c625f-0000.us-south.containers.appdomain.cloud

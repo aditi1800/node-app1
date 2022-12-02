@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 mongoose.connect(
-  "mongodb://admin:test1234@mongo.aditi-poc.svc.cluster.local:27017",
+  process.env.DB_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     if (!err) {

@@ -19,7 +19,7 @@ script:
    - docker run -p 8080:8080 -d aditishinde/node-app2:1.0
    - docker ps
    - oc login --token="$OC_TOKEN" --server="$OC_SERVER"
-   - oc new-project "$PROJECT_NAME"
+   - oc project "$PROJECT_NAME"
    - oc apply -f deployment.yaml  
   
    

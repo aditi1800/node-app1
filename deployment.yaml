@@ -51,7 +51,6 @@ metadata:
   annotations:
     openshift.io/generated-by: OpenShiftWebConsole
 spec:
-  clusterIP: 172.21.211.113
   ipFamilies:
     - IPv4
   ports:
@@ -60,8 +59,6 @@ spec:
       port: 8080
       targetPort: 8080
   internalTrafficPolicy: Cluster
-  clusterIPs:
-    - 172.21.211.113
   type: ClusterIP
   ipFamilyPolicy: SingleStack
   sessionAffinity: None

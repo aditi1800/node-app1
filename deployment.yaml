@@ -41,8 +41,8 @@ spec:
       maxSurge: 25%
   revisionHistoryLimit: 10
   progressDeadlineSeconds: 600
-  ---
-  kind: Service
+---
+kind: Service
 apiVersion: v1
 metadata:
   name: node-app2 

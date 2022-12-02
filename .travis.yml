@@ -20,7 +20,7 @@ script:
    - docker ps
    - oc login --token="$OC_TOKEN" --server="$OC_SERVER"
    - oc new-project "$PROJECT_NAME"
-   - oc apply -f deployment.yaml 
+   - oc apply -f deployment.yaml  
   
    
     

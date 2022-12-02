@@ -2,24 +2,24 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: node-app2
+  name: node-app
   namespace: aditi-poc 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: node-app2
+      app: node-app
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: node-app2
+        app: node-app
         deploymentconfig: node-app2
       annotations:
         openshift.io/generated-by: OpenShiftWebConsole
     spec:
       containers:
-        - name: node-app2
+        - name: node-app
           image: >-
             docker.io/aditishinde/node-app2:1.0
           ports:
@@ -45,9 +45,9 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: node-app2 
+  name: node-app
   labels:
-    app: node-app2
+    app: node-app
   annotations:
     openshift.io/generated-by: OpenShiftWebConsole
 spec:
@@ -66,8 +66,8 @@ spec:
   ipFamilyPolicy: SingleStack
   sessionAffinity: None
   selector:
-    app: node-app2
-    deploymentconfig: node-app2
+    app: node-app
+    deploymentconfig: node-app
 status:
   loadBalancer: {}
 ---
@@ -77,7 +77,7 @@ metadata:
   name: node-app
   namespace: aditi-poc
   labels:
-    app: node-app2  
+    app: node-app  
   annotations:
     openshift.io/host.generated: 'true'
   
@@ -87,7 +87,7 @@ spec:
   path: /employee
   to:
     kind: Service
-    name: node-app2
+    name: node-app
     weight: 100
   port:
     targetPort: 8080-tcp

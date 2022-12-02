@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  "mongodb://admin:test1234@mongo.aditi-poc.svc.cluster.local:27017",
-  { useNewUrlParser: true },
+  "mongodb://admin:test1234@mongo.aditi-poc.svc.cluster.local:27017/appdb",
+  { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     if (!err) {
       console.log("MongoDB Connection Succeeded.");

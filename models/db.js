@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  "mongodb://admin:test1234@mongo.aditi-poc.svc.cluster.local:27017/appdb",
+  "mongodb://admin:test1234@mongo.aditi-poc.svc.cluster.local:27017",
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     if (!err) {

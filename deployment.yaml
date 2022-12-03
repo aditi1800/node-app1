@@ -42,32 +42,18 @@ spec:
   revisionHistoryLimit: 10
   progressDeadlineSeconds: 600
 ---
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: node-app
-  namespace: node-app-demo-aditi 
-  labels:
-    app: node-app
-  annotations:
-    openshift.io/generated-by: OpenShiftWebConsole
+  name: node-app-svc
+  namespace: node-app-demo-aditi
 spec:
-  ipFamilies:
-    - IPv4
-  ports:
-    - name: 8080-tcp
-      protocol: TCP
-      port: 8080
-      targetPort: 8080
-  internalTrafficPolicy: Cluster
-  type: ClusterIP
-  ipFamilyPolicy: SingleStack
-  sessionAffinity: None
   selector:
     app: node-app
-    deploymentconfig: node-app
-status:
-  loadBalancer: {}
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
 ---
 kind: Route
 apiVersion: route.openshift.io/v1
@@ -77,13 +63,12 @@ metadata:
   labels:
     app: node-app  
   annotations:
-    openshift.io/host.generated: 'true'
-  
+    openshift.io/host.generated: 'true'  
 spec:
   path: /employee
   to:
     kind: Service
-    name: node-app
+    name: node-app-svc
     weight: 100
   port:
     targetPort: 8080-tcp

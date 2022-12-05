@@ -4,6 +4,7 @@ const express = require("express");
 const path = require("path");
 const exphbs = require("express-handlebars");
 const bodyparser = require("body-parser");
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
 const employeeController = require("./controllers/employeeController");
 
@@ -21,6 +22,7 @@ app.engine(
     extname: "hbs",
     defaultLayout: "mainLayout",
     layoutsDir: __dirname + "/views/layouts/",
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
   })
 );
 app.set("view engine", "hbs");

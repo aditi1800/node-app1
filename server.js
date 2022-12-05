@@ -2,6 +2,7 @@ require("./models/db");
 
 const express = require("express");
 const path = require("path");
+const Handlebars = require('handlebars')
 const exphbs = require("express-handlebars");
 const bodyparser = require("body-parser");
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')

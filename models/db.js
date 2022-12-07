@@ -12,5 +12,5 @@ mongoose.connect(
     }
   }
 );
-
+console.log(process.env.DB_URL);
 require("./employee.model");

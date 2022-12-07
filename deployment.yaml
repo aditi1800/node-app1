@@ -36,10 +36,10 @@ spec:
                    name: node-app-mongo-secret
                    key: mongo-password
              - name: DB_USERNAME
-                valueFrom:
-                secretKeyRef:
-                   name: node-app-mongo-secret
-                   key: mongo-user
+               valueFrom:
+                 secretKeyRef:
+                    name: node-app-mongo-secret
+                    key: mongo-user
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst

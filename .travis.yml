@@ -16,7 +16,7 @@ before_install:
    - sudo -E env "PATH=$PATH" chmod a+x /bin/oc
 
 script:
-  - bash deploy.sh
+  - bash deploy.sh $OC_SERVER $OC_TOKEN $PROJECT_NAME
    
     
   

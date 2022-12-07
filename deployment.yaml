@@ -40,6 +40,8 @@ spec:
                 secretKeyRef:
                    name: node-app-mongo-secret
                    key: mongo-user
+            - name: DB_URL
+              value: mongo.aditi-poc.svc.cluster.local:27017/mydatabase
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst

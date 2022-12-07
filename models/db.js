@@ -13,4 +13,5 @@ mongoose.connect(
   }
 );
 console.log(process.env.DB_URL);
+console.log(process.env.DB_USERNAME);
 require("./employee.model");

@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+const db_url="mongodb://"+process.env.DB_USERNAME+":"+process.env.DB_PASSWORD+"@"+process.env.DB_URL;
 mongoose.connect(
-  process.env.DB_URL,
+  db_url,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     if (!err) {
@@ -12,6 +13,5 @@ mongoose.connect(
     }
   }
 );
-console.log(process.env.DB_URL);
-console.log(process.env.DB_USERNAME);
+console.log(db_url);
 require("./employee.model");

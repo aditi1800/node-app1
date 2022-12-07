@@ -13,5 +13,4 @@ mongoose.connect(
     }
   }
 );
-console.log(db_url);
 require("./employee.model");

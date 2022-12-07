@@ -29,6 +29,17 @@ spec:
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: Always
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                   name: node-app-mongo-secret
+                   key: mongo-password
+             - name: DB_USERNAME
+                valueFrom:
+                secretKeyRef:
+                   name: node-app-mongo-secret
+                   key: mongo-user
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst

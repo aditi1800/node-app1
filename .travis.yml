@@ -15,11 +15,9 @@ before_install:
    - sudo -E env "PATH=$PATH" chmod a+x /usr/bin/oc
    - sudo -E env "PATH=$PATH" chmod a+x /bin/oc
 
-script:
-   - oc login --token="$OC_TOKEN" --server="$OC_SERVER"
-   - oc project "$PROJECT_NAME"
-   - oc apply -f deployment.yaml   
-  
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh
    
     
   

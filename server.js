@@ -8,8 +8,10 @@ const bodyparser = require("body-parser");
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
 const employeeController = require("./controllers/employeeController");
+const keycloak = require('./keycloak-config.js').initKeycloak();
 
 var app = express();
+app.use(keycloak.middleware());
 app.use(
   bodyparser.urlencoded({
     extended: true,

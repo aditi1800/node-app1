@@ -27,7 +27,7 @@ function initKeycloak() {
     var memoryStore = new session.MemoryStore();
     app.use(
       session({
-        secret: '6364AgfRZf7vjxzdQ2C5qTjb6gTxvaIM',
+        secret: 'some secret',
         resave: false,
         saveUninitialized: true,
         store: memoryStore,

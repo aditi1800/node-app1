@@ -17,22 +17,13 @@ var keycloakConfig = {
     "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhx9oykKI0+GUDC1+1+pkHpCjL8Ruk27Rld5kXZGfLv6gkL2TYCnrmv4e0W/fxcjx4VZazjF/84qVIlUU3BCnV75OhtHvOWCfkExV6tG5cdwZ+OHYGVkELMbnqub9edz/MCUCARn/Jm0K05gQ7YXdrFrQcg/xHAdNv8il6RkRi4aHgs7SKzcnUFuhz3RDWTbxLdQ+T0M/zSirq4Mx72KA/FnCQ1pigAOS2YcO9ynT9abyguxlVh/8S8C4BYuSS8ScoeCLkjEz+aDmR85ppVZkNiyIgUpjuKuo5KOMXQiXvtTyU54M/mw41ZFHRR8s0K+EZagnqNyIbi/Up/9dNWNuDwIDAQAB",
 };
 
-function initKeycloak() {
+function initKeycloak(memoryStore) {
   if (_keycloak) {
     console.warn("Trying to init Keycloak again!");
     return _keycloak;
   } else {
     console.log("Initializing Keycloak...");
-    var app = express();
-    var memoryStore = new session.MemoryStore();
-    app.use(
-      session({
-        secret: 'some secret',
-        resave: false,
-        saveUninitialized: true,
-        store: memoryStore,
-      })
-    );
+    
     _keycloak = new Keycloak({ store: memoryStore }, keycloakConfig);
     return _keycloak;
   }

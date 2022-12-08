@@ -1,3 +1,4 @@
+const express = require("express");
 const session = require("express-session");
 const Keycloak = require("keycloak-connect");
 
@@ -22,7 +23,16 @@ function initKeycloak() {
     return _keycloak;
   } else {
     console.log("Initializing Keycloak...");
+    var app = express();
     var memoryStore = new session.MemoryStore();
+    app.use(
+      session({
+        secret: '6364AgfRZf7vjxzdQ2C5qTjb6gTxvaIM',
+        resave: false,
+        saveUninitialized: true,
+        store: memoryStore,
+      })
+    );
     _keycloak = new Keycloak({ store: memoryStore }, keycloakConfig);
     return _keycloak;
   }

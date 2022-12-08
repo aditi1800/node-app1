@@ -6,13 +6,14 @@ const Handlebars = require('handlebars')
 const exphbs = require("express-handlebars");
 const bodyparser = require("body-parser");
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+
+var app = express();
+
 const session = require('express-session')
 var memoryStore = new session.MemoryStore();
 app.use(session({ secret: 'some secret', resave: false, saveUninitialized: true, store: memoryStore }));
 const keycloak = require('./keycloak-config.js').initKeycloak(memoryStore);
 
-
-var app = express();
 app.use(keycloak.middleware());
 const employeeController = require("./controllers/employeeController");
 

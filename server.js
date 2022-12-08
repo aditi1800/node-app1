@@ -6,12 +6,13 @@ const Handlebars = require('handlebars')
 const exphbs = require("express-handlebars");
 const bodyparser = require("body-parser");
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
-
-const employeeController = require("./controllers/employeeController");
 const keycloak = require('./keycloak-config.js').initKeycloak();
+
 
 var app = express();
 app.use(keycloak.middleware());
+const employeeController = require("./controllers/employeeController");
+
 app.use(
   bodyparser.urlencoded({
     extended: true,

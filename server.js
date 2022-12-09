@@ -14,7 +14,10 @@ var memoryStore = new session.MemoryStore();
 app.use(session({ secret: 'some secret', resave: false, saveUninitialized: true, store: memoryStore }));
 const keycloak = require('./keycloak-config.js').initKeycloak(memoryStore);
 
-app.use(keycloak.middleware());
+app.use(keycloak.middleware({
+  logout: '/logout',
+  admin: '/employee'
+}));
 const employeeController = require("./controllers/employeeController");
 
 app.use(

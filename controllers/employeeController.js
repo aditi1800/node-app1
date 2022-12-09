@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Employee = mongoose.model('Employee');
 const keycloak = require("../keycloak-config.js").getKeycloak();
 
-router.get('/', keycloak.protect("admin"), (req, res) => {
+router.get('/', keycloak.protect("realm:app-admin"), (req, res) => {
     res.render("employee/addOrEdit", {
         viewTitle: "Insert Employee"
     });
@@ -59,7 +59,7 @@ function updateRecord(req, res) {
 }
 
 
-router.get('/list', keycloak.protect("admin"), (req, res) => {
+router.get('/list', keycloak.protect("realm:app-admin"), (req, res) => {
     Employee.find((err, docs) => {
         if (!err) {
             res.render("employee/list", {
@@ -88,7 +88,7 @@ function handleValidationError(err, body) {
     }
 }
 
-router.get('/:id', keycloak.protect("admin"), (req, res) => {
+router.get('/:id', keycloak.protect("realm:app-admin"), (req, res) => {
     Employee.findById(req.params.id, (err, doc) => {
         if (!err) {
             res.render("employee/addOrEdit", {
@@ -99,7 +99,7 @@ router.get('/:id', keycloak.protect("admin"), (req, res) => {
     });
 });
 
-router.get('/delete/:id', keycloak.protect("admin"), (req, res) => {
+router.get('/delete/:id', keycloak.protect("realm:app-admin"), (req, res) => {
     Employee.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
             res.redirect('/employee/list');

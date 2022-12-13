@@ -5,7 +5,7 @@ const Employee = mongoose.model('Employee');
 const keycloak = require("../keycloak-config.js").getKeycloak();
 
 router.get('/', (req, res) => {
-    var token=req.headers['authorization'];
+    var token=req.headers;
     console.log(token);
     res.render("employee/addOrEdit", {
         viewTitle: "Insert Employee"

@@ -19,9 +19,6 @@ app.use(keycloak.middleware({
   admin: '/employee'
 }));
 const employeeController = require("./controllers/employeeController");
-app.use((req, res, next) => {
-console.log(req.headers)
-});
 app.use(
   bodyparser.urlencoded({
     extended: true,

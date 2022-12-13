@@ -5,6 +5,7 @@ const Employee = mongoose.model('Employee');
 const keycloak = require("../keycloak-config.js").getKeycloak();
 
 router.get('/', (req, res) => {
+    console.log(req);
     res.render("employee/addOrEdit", {
         viewTitle: "Insert Employee"
     });

@@ -36,7 +36,7 @@ pipeline {
                 openshift.withCluster() {
                     openshift.withProject("$DEV_PROJECT") {
                         echo "Using project: ${openshift.project()}"
-                         sh -x $WORKSPACE/deploy.sh
+                         sh 'sh -x $WORKSPACE/deploy.sh'
                     }
                 }
             }

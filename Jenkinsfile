@@ -36,7 +36,7 @@ pipeline {
                 openshift.withCluster() {
                     openshift.withProject("$DEV_PROJECT") {
                         echo "Using project: ${openshift.project()}"
-                        oc version
+                        sh 'oc version'
                     }
                 }
             }

@@ -14,7 +14,7 @@ pipeline {
     // Use the 'maven' Jenkins agent image which is provided with OpenShift 
     agent any
   environment {
-  DEV_PROJECT=node-app-demo-aditi
+  DEV_PROJECT="node-app-demo-aditi"
   }
     stages {
         stage("Checkout") {

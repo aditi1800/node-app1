@@ -1,56 +1,34 @@
+library identifier: "pipeline-library@v1.5",
+retriever: modernSCM(
+  [
+    $class: "GitSCMSource",
+    remote: "https://github.com/redhat-cop/pipeline-library.git"
+  ]
+)
+
+// The name you want to give your Spring Boot application
+// Each resource related to your app will be given this name
+appName = "node-app-buildconfig"
+
 pipeline {
-    options {
-        // set a timeout of 60 minutes for this pipeline
-        timeout(time: 60, unit: 'MINUTES')
-    }
-
-    environment {
-        APP_NAME = "node-app"
-        DEV_PROJECT = "aditi-poc"
-        STAGE_PROJECT = "node-app-stage"
-        PROD_PROJECT = "node-app-prod"
-        APP_GIT_URL = "https://github.com/aditi1800/node-app1.git"
-    }
-    
-    agent {
-      node {
-        label 'nodejs'
-      }
-    }
-
+    // Use the 'maven' Jenkins agent image which is provided with OpenShift 
+    agent { label "nodejs" }
     stages {
-        stage('Deploy to DEV environment') {
+        stage("Checkout") {
             steps {
-                echo '#####Deploy to DEV environment ######'
-                script {
-                    openshift.withCluster() {
-                        openshift.withProject("$DEV_PROJECT") {
-                            echo "Using project: ${openshift.project()}"
-                           // If DeploymentConfig already exists, rollout to update the application
-                            if (openshift.selector("dc", APP_NAME).exists()) {
-                                echo "DeploymentConfig " + APP_NAME + " exists, rollout to update app ..."
-                                // Rollout (it corresponds to oc rollout <deploymentconfig>)
-                                def dc = openshift.selector("dc", "${APP_NAME}")
-                                dc.rollout().latest()
-                                // If a Route does not exist, expose the Service and create the Route
-                                if (!openshift.selector("route", APP_NAME).exists()) {
-                                    echo "Route " + APP_NAME + " does not exist, exposing service ..." 
-                                    def service = openshift.selector("service", APP_NAME)
-                                    service.expose()
-                                }
-                            } 
-                            // If DeploymentConfig does not exist, deploy a new application using an OpenShift Template
-                            else{
-                                echo "DeploymentConfig " + APP_NAME + " does not exist, creating app ..."
-                                openshift.newApp('https://github.com/aditi1800/node-app1/blob/main/deployment.yaml')
-                            }
-                            def route = openshift.selector("route", APP_NAME)
-                            echo "Test application with "
-                            def result = route.describe()   
-                        }
-                    }
-                }
+                checkout scm
             }
         }
+        stage("Docker Build") {
+            steps {
+                // This uploads your application's source code and performs a binary build in OpenShift
+                // This is a step defined in the shared library (see the top for the URL)
+                // (Or you could invoke this step using 'oc' commands!)
+                binaryBuild(buildConfigName: appName, buildFromPath: ".")
+            }
+        }
+
+        // You could extend the pipeline by tagging the image,
+        // or deploying it to a production environment, etc......
     }
 }

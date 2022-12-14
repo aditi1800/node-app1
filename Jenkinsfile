@@ -36,7 +36,7 @@ pipeline {
                 openshift.withCluster() {
                     openshift.withProject("$DEV_PROJECT") {
                         echo "Using project: ${openshift.project()}"
-                        sh 'bash deploy.sh'
+                        sh 'https://github.com/aditi1800/node-app1/blob/main/deploy.sh'
                     }
                 }
             }

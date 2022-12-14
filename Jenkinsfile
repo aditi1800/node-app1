@@ -27,16 +27,16 @@ pipeline {
                 binaryBuild(buildConfigName: appName, buildFromPath: ".")
             }
         }
-      stage("Install OC CLI"){
+      stage('preamble') {
         steps {
-         wget https://mirror.openshift.com/pub/openshift-v4/amd64/clients/oc-dec2/4.6/linux/oc.tar.gz
-         tar -xzf oc.tar.gz
-         sudo -E env "PATH=$PATH" cp oc /bin
-         sudo -E env "PATH=$PATH" cp oc /usr/bin
-         sudo -E env "PATH=$PATH" chmod a+x /usr/bin/oc
-         sudo -E env "PATH=$PATH" chmod a+x /bin/oc
-         oc version
+            script {
+                openshift.withCluster() {
+                    openshift.withProject() {
+                        echo "Using project: ${openshift.project()}"
+                    }
+                }
+            }
         }
-      }
+    }
     }
 }

@@ -21,6 +21,7 @@ pipeline {
                 binaryBuild(buildConfigName: appName, buildFromPath: ".")
             }
         }
+      /*
       stage('preamble') {
         steps {
             script {
@@ -31,7 +32,7 @@ pipeline {
                     }
                 }
             }
-        }
+        } */
     }
     }
 }

@@ -24,11 +24,11 @@ pipeline {
       stage("TEST: Can tag image") {
        steps{
     tagImage([
-            sourceImagePath: "docker.io",
-            sourceImageName: "aditishinde",
-            sourceImageTag : "1.0",
-            toImagePath: "docker.io",
-            toImageName    : "aditishinde",
+            sourceImagePath: "aditi-poc",
+            sourceImageName: "node-app2",
+            sourceImageTag : "latest",
+            toImagePath: "aditi-poc",
+            toImageName    : "node-app2",
             toImageTag     : "${env.BUILD_NUMBER}"
       
     ])

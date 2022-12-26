@@ -35,7 +35,7 @@ pipeline {
        }
 }
       
-       stage("Trigger ManifestUpdate"){
+       stage("Trigger Deployment Update Pipeline"){
         steps{
           build job:'node-app-update-deployment-pipeline' , parameters: [string(name: 'DOCKERTAG',value: env.BUILD_NUMBER)]
         }

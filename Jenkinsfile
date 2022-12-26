@@ -34,6 +34,12 @@ pipeline {
     ])
        }
 }
+      
+       stage("Trigger ManifestUpdate"){
+        steps{
+          build job:'node-app-update-deployment-pipeline' , parameters: [string(name: 'DOCKERTAG',value: env.BUILD_NUMBER)]
+        }
+      }
       /*
       stage('preamble') {
         steps {

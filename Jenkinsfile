@@ -21,6 +21,19 @@ pipeline {
                 binaryBuild(buildConfigName: appName, buildFromPath: ".")
             }
         }
+      stage("TEST: Can tag image") {
+       steps{
+    tagImage([
+            sourceImagePath: "docker.io",
+            sourceImageName: "aditishinde",
+            sourceImageTag : "1.0",
+            toImagePath: "docker.io",
+            toImageName    : "aditishinde",
+            toImageTag     : "${env.BUILD_NUMBER}"
+      
+    ])
+       }
+}
       /*
       stage('preamble') {
         steps {

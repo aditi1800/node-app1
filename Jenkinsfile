@@ -21,7 +21,7 @@ pipeline {
                 binaryBuild(buildConfigName: appName, buildFromPath: ".")
             }
         }
-      stage("TEST: Can tag image") {
+      stage("Tag image") {
        steps{
     tagImage([
             sourceImagePath: "aditi-poc",

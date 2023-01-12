@@ -1,0 +1,62 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: node-app-buildconfig
+  namespace: aditi-poc
+  uid: 02da5fcd-ff5f-4dec-85c6-b5619d95b0a0
+  resourceVersion: '49788111'
+  generation: 35
+  creationTimestamp: '2022-12-14T06:49:03Z'
+  labels:
+    app.kubernetes.io/name: node-app-buildconfig
+  managedFields:
+    - manager: Go-http-client
+      operation: Update
+      apiVersion: build.openshift.io/v1
+      time: '2022-12-14T07:05:37Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:lastVersion': {}
+    - manager: Mozilla
+      operation: Update
+      apiVersion: build.openshift.io/v1
+      time: '2022-12-15T12:39:19Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/name': {}
+        'f:spec':
+          'f:output':
+            'f:to': {}
+          'f:runPolicy': {}
+          'f:source':
+            'f:binary': {}
+            'f:type': {}
+          'f:strategy':
+            'f:dockerStrategy':
+              .: {}
+              'f:dockerfilePath': {}
+            'f:type': {}
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'node-app2:latest'
+  resources: {}
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+  postCommit: {}
+  source:
+    type: Binary
+    binary: {}
+  runPolicy: Serial
+status:
+  lastVersion: 29

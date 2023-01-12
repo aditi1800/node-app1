@@ -1,0 +1,131 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: node-app2
+  namespace: aditi-poc
+  uid: 01cc77d0-93dc-48ec-ba69-07f5f49a2442
+  resourceVersion: '50983052'
+  generation: 6
+  creationTimestamp: '2022-12-28T05:39:01Z'
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - name: '10'
+      annotations: null
+      from:
+        kind: ImageStreamImage
+        namespace: aditi-poc
+        name: >-
+          node-app2@sha256:6a86e99b56729f3098aaf2cfaa41f22f3ce1841e6f17ce04b9884464e4facb09
+      generation: 2
+      importPolicy: {}
+      referencePolicy:
+        type: Source
+    - name: '11'
+      annotations: null
+      from:
+        kind: ImageStreamImage
+        namespace: aditi-poc
+        name: >-
+          node-app2@sha256:84c73ea99d8cf9b5aa9796fb71b4a756347248e28731ecc0acceacdacf22b521
+      generation: 3
+      importPolicy: {}
+      referencePolicy:
+        type: Source
+    - name: '12'
+      annotations: null
+      from:
+        kind: ImageStreamImage
+        namespace: aditi-poc
+        name: >-
+          node-app2@sha256:af3514573ec7a61441cf41cb7915d40f151dd70ff61be00257c50a113e7cb556
+      generation: 4
+      importPolicy: {}
+      referencePolicy:
+        type: Source
+    - name: '13'
+      annotations: null
+      from:
+        kind: ImageStreamImage
+        namespace: aditi-poc
+        name: >-
+          node-app2@sha256:eaf481b8df8d941fff5b35e0771cf58a265283fb4e76380e31530ca9f1f58ad8
+      generation: 6
+      importPolicy: {}
+      referencePolicy:
+        type: Source
+    - name: '57'
+      annotations: null
+      from:
+        kind: ImageStreamImage
+        namespace: aditi-poc
+        name: >-
+          node-app2@sha256:70c566e9f1ab6f01616c6155e6710484dab2b18145a20bfe4852b8b3eb2765bc
+      generation: 5
+      importPolicy: {}
+      referencePolicy:
+        type: Source
+status:
+  dockerImageRepository: 'image-registry.openshift-image-registry.svc:5000/aditi-poc/node-app2'
+  tags:
+    - tag: '10'
+      items:
+        - created: '2022-12-28T05:42:13Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/aditi-poc/node-app2@sha256:6a86e99b56729f3098aaf2cfaa41f22f3ce1841e6f17ce04b9884464e4facb09
+          image: >-
+            sha256:6a86e99b56729f3098aaf2cfaa41f22f3ce1841e6f17ce04b9884464e4facb09
+          generation: 2
+    - tag: '11'
+      items:
+        - created: '2022-12-28T06:14:32Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/aditi-poc/node-app2@sha256:84c73ea99d8cf9b5aa9796fb71b4a756347248e28731ecc0acceacdacf22b521
+          image: >-
+            sha256:84c73ea99d8cf9b5aa9796fb71b4a756347248e28731ecc0acceacdacf22b521
+          generation: 3
+    - tag: '12'
+      items:
+        - created: '2022-12-28T07:00:10Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/aditi-poc/node-app2@sha256:af3514573ec7a61441cf41cb7915d40f151dd70ff61be00257c50a113e7cb556
+          image: >-
+            sha256:af3514573ec7a61441cf41cb7915d40f151dd70ff61be00257c50a113e7cb556
+          generation: 4
+    - tag: '13'
+      items:
+        - created: '2022-12-29T07:19:01Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/aditi-poc/node-app2@sha256:eaf481b8df8d941fff5b35e0771cf58a265283fb4e76380e31530ca9f1f58ad8
+          image: >-
+            sha256:eaf481b8df8d941fff5b35e0771cf58a265283fb4e76380e31530ca9f1f58ad8
+          generation: 6
+    - tag: '57'
+      items:
+        - created: '2022-12-29T07:15:57Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/aditi-poc/node-app2@sha256:70c566e9f1ab6f01616c6155e6710484dab2b18145a20bfe4852b8b3eb2765bc
+          image: >-
+            sha256:70c566e9f1ab6f01616c6155e6710484dab2b18145a20bfe4852b8b3eb2765bc
+          generation: 5
+    - tag: latest
+      items:
+        - created: '2022-12-29T07:18:54Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/aditi-poc/node-app2@sha256:eaf481b8df8d941fff5b35e0771cf58a265283fb4e76380e31530ca9f1f58ad8
+          image: >-
+            sha256:eaf481b8df8d941fff5b35e0771cf58a265283fb4e76380e31530ca9f1f58ad8
+          generation: 5
+        - created: '2022-12-29T07:15:49Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/aditi-poc/node-app2@sha256:70c566e9f1ab6f01616c6155e6710484dab2b18145a20bfe4852b8b3eb2765bc
+          image: >-
+            sha256:70c566e9f1ab6f01616c6155e6710484dab2b18145a20bfe4852b8b3eb2765bc
+          generation: 4
+        - created: '2022-12-28T06:59:59Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/aditi-poc/node-app2@sha256:af3514573ec7a61441cf41cb7915d40f151dd70ff61be00257c50a113e7cb556
+          image: >-
+            sha256:af3514573ec7a61441cf41cb7915d40f151dd70ff61be00257c50a113e7cb556
+          generation: 3
